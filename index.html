@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bizim Hikayemiz</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, serif;
+    background: linear-gradient(180deg, #fde0dc, #ffffff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 700px;
+    padding: 20px;
+    text-align: center;
+}
+
+.counter {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #b71c1c;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 480px) {
+    .counter {
+        font-size: 1.2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Sayaç -->
+    <div class="counter" id="counter">Yükleniyor...</div>
+
+    <!-- Romantik Şiirsel Yazılar -->
+    <p>Bazı anlar vardır, saniyelere sığmaz.</p>
+    <p>5 Ekim saat 16:00’dan sonra zaman bizimle anılmaya başladı.</p>
+    <p>Kalabalıklar içinde bile birbirini bulan iki kalp gibi, her gün biraz daha “biz”.</p>
+    <p>Bu sayfa; geçmişi hatırlamak için değil, geleceği hiç unutmamak için.</p>
+
+</div>
+
+<script>
+// Başlangıç tarihi
+const startDate = new Date("2024-10-05T16:00:00"); // yıl farklıysa 2023 yap
+
+function updateCounter() {
+    const now = new Date();
+    let diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff %= (1000 * 60 * 60 * 24);
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    diff %= (1000 * 60 * 60);
+
+    const minutes = Math.floor(diff / (1000 * 60));
+    diff %= (1000 * 60);
+
+    const seconds = Math.floor(diff / 1000);
+    const milliseconds = diff % 1000;
+
+    document.getElementById("counter").innerText =
+        `❤️ ${days} gün ${hours} saat ${minutes} dakika ${seconds} saniye ${milliseconds} salise`;
+}
+
+// Sayaç her 10ms güncellenecek
+setInterval(updateCounter, 10);
+updateCounter();
+</script>
+
+</body>
+</html>
